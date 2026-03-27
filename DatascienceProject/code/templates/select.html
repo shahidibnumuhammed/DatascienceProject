@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Target</title>
+</head>
+<body>
+
+<h2>Select Target Column</h2>
+
+<form action="/train" method="post">
+    <select name="target">
+        {% for col in columns %}
+        <option value="{{col}}">{{col}}</option>
+        {% endfor %}
+    </select>
+
+    <input type="submit" value="Train Model">
+</form>
+
+</body>
+</html>

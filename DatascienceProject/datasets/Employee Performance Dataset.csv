@@ -1,0 +1,6 @@
+EmployeeID,WorkHours,Attendance,PreviousRating,Promotion
+E001,8,0.92,4.5,1
+E002,5,0.70,3.0,0
+E003,9,0.95,4.8,1
+E004,6,0.80,3.5,0
+E005,7,0.88,4.2,1

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Universal Data Science App</title>
+</head>
+<body>
+
+<h2>📂 Upload Any Dataset</h2>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <input type="submit" value="Upload">
+</form>
+
+<!-- ✅ Show results only after training -->
+{% if trained %}
+
+<h3>📊 Model Accuracy: {{accuracy}}%</h3>
+
+<h3>📊 Target Distribution</h3>
+<img src="{{ url_for('static', filename='plot1.png') }}" width="400">
+
+<h3>📈 Correlation Matrix</h3>
+<img src="{{ url_for('static', filename='plot2.png') }}" width="500">
+
+<h3>🔗 Pairplot</h3>
+<img src="{{ url_for('static', filename='plot3.png') }}" width="500">
+
+<h3>📦 Boxplot</h3>
+<img src="{{ url_for('static', filename='plot4.png') }}" width="500">
+
+<hr>
+
+<h2>🔮 Prediction</h2>
+
+<form action="/predict" method="post">
+    {% for col in features %}
+        {{col}}: <input type="text" name="{{col}}" required><br><br>
+    {% endfor %}
+    <input type="submit" value="Predict">
+</form>
+
+{% endif %}
+
+<!-- ✅ Prediction result -->
+{% if prediction is not none %}
+<h3>Prediction: {{prediction}}</h3>
+{% endif %}
+
+</body>
+</html>
